@@ -1,11 +1,11 @@
 package com.techiekernel.rest;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.techiekernel.service.FooBarService;
@@ -18,6 +18,12 @@ public class FooBarWS {
 	@GET
 	@Path("/{param}")
 	public Response getMessage(@PathParam("param") String msg) {
+		return Response.status(200).entity(fooBarService.getMessage(msg)).build();
+	}
+	
+	@POST
+	@Path("/{param}")
+	public Response getMessage_post(@PathParam("param") String msg) {
 		return Response.status(200).entity(fooBarService.getMessage(msg)).build();
 	}
 
